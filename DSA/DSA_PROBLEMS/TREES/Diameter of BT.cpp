@@ -1,9 +1,26 @@
 /*
 Leetcode: 543
 https://www.youtube.com/watch?v=ey7DYc9OANo&ab_channel=Vivekanand-AlgorithmEveryDay
-
+https://www.youtube.com/watch?v=Rezetez59Nk
 */
 
+
+class Solution {
+    int dia = INT_MIN;
+public:
+    int helper(TreeNode* root) {
+        if(!root) return 0;
+        int lh = helper(root->left);
+        int rh = helper(root->right);
+        dia = max(dia,lh+rh);
+        return 1 + max(lh,rh);
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        helper(root);
+        return dia;
+    }
+};
 class Solution {
 public:
     int diameterOfBinaryTree(TreeNode* root) {
